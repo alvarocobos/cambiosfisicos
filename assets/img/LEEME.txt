@@ -1,0 +1,10 @@
+IMÁGENES DE LA WEB
+==================
+
+alvaro.jpg   → tu foto de perfil, la que sale redonda arriba del todo.
+               Cuadrada, unos 300x300 px.
+
+og.jpg       → la miniatura que se ve al compartir el enlace por
+               WhatsApp o redes. 1200x630 px.
+
+cambios/     → las fotos antes/después (mira el LEEME de dentro).

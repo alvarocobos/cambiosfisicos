@@ -1,0 +1,20 @@
+FOTOS DE LOS CAMBIOS
+====================
+
+Sube aquí las dos fotos de cada caso con este nombre exacto:
+
+    <slug>-antes.jpg
+    <slug>-despues.jpg
+
+El "slug" de cada caso está en assets/data/cambios.js
+
+Slugs actuales:
+    jose-luis-antes.jpg   /  jose-luis-despues.jpg
+    monica-antes.jpg      /  monica-despues.jpg
+    luciana-antes.jpg     /  luciana-despues.jpg
+    alvaro-antes.jpg      /  alvaro-despues.jpg
+    juanjo-antes.jpg      /  juanjo-despues.jpg
+
+Formato recomendado: vertical 3:4 (900x1200 px), menos de 300 KB.
+Mientras falte una foto, la web muestra un recuadro con el nombre
+exacto del archivo que hay que subir.
