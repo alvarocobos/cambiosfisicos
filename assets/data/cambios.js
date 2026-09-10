@@ -75,6 +75,19 @@ const CAMBIOS = [
     tags: ["Pérdida de grasa", "Cero rebote", "Más energía"]
   },
   {
+    slug: "alvaro",
+    nombre: "Álvaro",
+    genero: "hombre",
+    tipo: "musculo",
+    titular: "De blando a atlético",
+    duracion: "Recomposición",
+    resumen: "Mi propio cambio: de blando a atlético.",
+    historia:
+      "Mi propio cambio. Dejé atrás el aspecto tapado y sin forma para construir masa muscular de verdad: volumen en hombros, espalda y pecho, bajando el porcentaje de grasa y logrando esa estética fuerte y definida que llevaba años buscando. Lo que te propongo es exactamente lo que hice yo.",
+    tags: ["+ Músculo", "− Grasa", "Estética atlética"],
+    esMio: true
+  },
+  {
     slug: "monica",
     nombre: "Mónica",
     genero: "mujer",
@@ -135,20 +148,8 @@ const CAMBIOS = [
     historia:
       "Quemó la grasa rebelde de la cintura (5 cm menos) a la vez que metía músculo limpio. Se mira al espejo y ve a un tío fuerte y compacto pesando exactamente lo mismo, demostrando el poder de entrenar y comer con cabeza.",
     tags: ["Recomposición", "− Cintura", "+ Fuerza"]
-  },
-  {
-    slug: "alvaro",
-    nombre: "Álvaro",
-    genero: "hombre",
-    tipo: "musculo",
-    titular: "De blando a atlético",
-    duracion: "Recomposición",
-    resumen: "Mi propio cambio: de blando a atlético.",
-    historia:
-      "Mi propio cambio. Dejé atrás el aspecto tapado y sin forma para construir masa muscular de verdad: volumen en hombros, espalda y pecho, bajando el porcentaje de grasa y logrando esa estética fuerte y definida que llevaba años buscando. Lo que te propongo es exactamente lo que hice yo.",
-    tags: ["+ Músculo", "− Grasa", "Estética atlética"],
-    esMio: true
   }
+
 
   /* ── PLANTILLA PARA UN CAMBIO NUEVO ──────────────────────────────────────
   ,{
