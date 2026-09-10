@@ -141,7 +141,7 @@
             card.style.animation = "";
             card.style.animationDelay = (n * 45) + "ms";
             // y la chapa se vuelve a anunciar
-            card.classList.remove("is-vista", "chapa-fuera");
+            rearmar(card);
             (function (c, ms) {
               setTimeout(function () { anunciar(c); }, ms);
             })(card, 120 + n * 45);
@@ -212,9 +212,22 @@
      después se aparta para no tapar la foto. Vuelve al pasar el ratón. */
   var ESPERA_CHAPA = 2200;
 
+  // En móvil no hay ratón, así que la chapa no puede "volver al pasar por
+  // encima": se rearma para anunciarse cada vez que la tarjeta entra en pantalla.
+  var HAY_RATON = !window.matchMedia || window.matchMedia("(hover: hover)").matches;
+
   function anunciar(el, espera) {
+    clearTimeout(el._chapa);
+    el.classList.remove("chapa-fuera");
     el.classList.add("is-vista");
-    setTimeout(function () { el.classList.add("chapa-fuera"); }, espera || ESPERA_CHAPA);
+    el._chapa = setTimeout(function () {
+      el.classList.add("chapa-fuera");
+    }, espera || ESPERA_CHAPA);
+  }
+
+  function rearmar(el) {
+    clearTimeout(el._chapa);
+    el.classList.remove("is-vista", "chapa-fuera");
   }
 
   function chapas() {
@@ -225,9 +238,13 @@
     }
     var io = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        io.unobserve(en.target);
-        anunciar(en.target);
+        var card = en.target;
+        if (en.isIntersecting) {
+          if (HAY_RATON) io.unobserve(card);   // con ratón basta una vez
+          anunciar(card);
+        } else if (!HAY_RATON) {
+          rearmar(card);                       // sin ratón, se prepara para volver
+        }
       });
     }, { threshold: 0.35 });
     tarjetas.forEach(function (c) { io.observe(c); });

@@ -335,10 +335,14 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
 .card.chapa-fuera .medida,
 .lb__media.chapa-fuera .medida{opacity:0;transform:translate(-50%,-8px) scale(1.05)}
 
-/* 3. vuelve si la persona se interesa por la tarjeta */
-.card:hover .medida,
-.card:focus-visible .medida,
-.lb__media:hover .medida{opacity:1;transform:translate(-50%,0) scale(1)}
+/* 3. vuelve si la persona se interesa por la tarjeta.
+   El :hover solo se aplica donde hay ratón de verdad; en pantallas táctiles
+   se rearma sola cada vez que la tarjeta vuelve a entrar en pantalla. */
+@media (hover:hover){
+  .card:hover .medida,
+  .lb__media:hover .medida{opacity:1;transform:translate(-50%,0) scale(1)}
+}
+.card:focus-visible .medida{opacity:1;transform:translate(-50%,0) scale(1)}
 
 .card__body{display:flex;flex-direction:column;flex:1;padding:19px 20px 21px}
 .card__name{font-size:19px;font-weight:600;letter-spacing:-.02em;color:var(--text);margin-bottom:2px}
