@@ -97,7 +97,8 @@
              '<div class="pair">' + foto(c, "antes") + foto(c, "despues") + medida(c) + "</div>" +
              '<div class="card__body">' +
                '<h3 class="card__name">' + c.nombre + "</h3>" +
-               '<p class="card__meta">' + c.duracion + ' <i>&middot;</i> ' + genero + "</p>" +
+               '<p class="card__meta">' +
+                 (c.duracion ? c.duracion + ' <i>&middot;</i> ' : "") + genero + "</p>" +
                '<p class="card__sum">' + c.resumen + "</p>" +
                '<div class="tags">' + tags + "</div>" +
                '<span class="card__more">Ver el cambio <span>&rarr;</span></span>' +
@@ -156,7 +157,8 @@
       $("#lbMedia").innerHTML = '<div class="pair">' + foto(c, "antes") + foto(c, "despues") + medida(c) + "</div>";
       $("#lbTitular").textContent = c.titular;
       $("#lbName").textContent = c.nombre;
-      $("#lbMeta").textContent = c.duracion + " · " +
+      $("#lbMeta").textContent =
+        (c.duracion ? c.duracion + " · " : "") +
         (c.esMio ? "Mi propio cambio" : (c.genero === "mujer" ? "Mujer" : "Hombre"));
       $("#lbStory").textContent = c.historia;
       lb.hidden = false;

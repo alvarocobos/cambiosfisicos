@@ -8,16 +8,19 @@ Cada caso busca sus dos fotos con este nombre exacto:
 
 El "slug" de cada caso está en assets/data/cambios.js
 
-YA PUESTAS (recortadas a 3:4, 800x1067):
-    jose-luis-antes.jpg  /  jose-luis-despues.jpg
-    monica-antes.jpg     /  monica-despues.jpg
-    juanjo-antes.jpg     /  juanjo-despues.jpg
-    alvaro-antes.jpg     /  alvaro-despues.jpg
+PUESTAS (todas a 720x1200, formato 3:5):
+    jose-luis · monica · antonio · luciana · pepito · juanjo · alvaro
 
-PENDIENTES:
-    luciana-antes.jpg    /  luciana-despues.jpg
-    (su ficha está comentada en cambios.js hasta que existan)
+Cómo se prepararon: las fotos originales venían en formatos muy distintos
+(pares en horizontal, pares apilados, capturas de app...). Se separaron en
+sus dos mitades y se encajaron en un marco común:
 
-Formato recomendado: vertical 3:4 (900x1200 px), menos de 300 KB.
-Mientras falte una foto, la web muestra un recuadro con el nombre
-exacto del archivo que hay que subir.
+  - Si a la foto le sobraba ANCHO, se recorta por los lados, centrando el
+    recorte en la persona (no en el medio de la foto).
+  - Si le sobraba ALTO, NO se recorta nada: el hueco se rellena con una
+    copia difuminada y oscurecida de la propia foto.
+
+Así ninguna foto pierde cuerpo y la rejilla queda uniforme.
+
+Si añades fotos nuevas a mano, lo ideal es que ya vengan en vertical 3:5
+(por ejemplo 720x1200) y por debajo de 150 KB.

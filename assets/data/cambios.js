@@ -50,7 +50,8 @@ const CONFIG = {
    genero    → "hombre" | "mujer"   (alimenta el filtro)
    tipo      → "perdida" | "recomposicion" | "musculo"
    titular   → el dato potente, se ve en grande (ej: "-40 kg")
-   duracion  → tiempo del proceso (ej: "10 meses")
+   duracion  → tiempo del proceso (ej: "10 meses"). Opcional: si lo dejas
+                vacío (""), la ficha simplemente no lo muestra.
    resumen   → una línea corta, la que se lee de un vistazo
    historia  → el texto largo, se ve al abrir la ficha
    tags      → 2 o 3 etiquetas cortas
@@ -85,11 +86,19 @@ const CAMBIOS = [
       "Pesa prácticamente lo mismo que cuando empezó, pero su cuerpo es completamente distinto. Perdió la grasa blanda, tonificó al máximo y ganó músculo firme. Pasó de fijarse en un número absurdo en la báscula a verse apretada, fuerte y espectacular frente al espejo.",
     tags: ["Recomposición", "Tonificación", "+ Músculo"]
   },
-  /* ── LUCIANA: apagada hasta tener sus fotos ─────────────────────────────
-     Su tarjeta saldría con los recuadros de "falta la foto" a la vista de
-     todo el mundo. En cuanto subas luciana-antes.jpg y luciana-despues.jpg
-     a assets/img/cambios/, borra esta línea y la del final del bloque.
-
+  {
+    /* ⚠️ ÁLVARO: revisa el titular y añade la duración cuando la tengas */
+    slug: "antonio",
+    nombre: "Antonio",
+    genero: "hombre",
+    tipo: "recomposicion",
+    titular: "Recomposición corporal",
+    duracion: "",
+    resumen: "Perdió grasa y ganó músculo a la vez.",
+    historia:
+      "Recomposición de manual: quemó la grasa que le tapaba el trabajo del gimnasio mientras seguía construyendo músculo. El resultado es un cuerpo con forma y definición, no simplemente un cuerpo más delgado.",
+    tags: ["Recomposición", "− Grasa", "+ Definición"]
+  },
   {
     slug: "luciana",
     nombre: "Luciana",
@@ -102,20 +111,18 @@ const CAMBIOS = [
       "En solo su primer mes se quitó 10 cm de cintura de encima. Los pantalones le empezaron a bailar de golpe y vio desde el día uno que este sistema sí funcionaba para ella.",
     tags: ["Primer mes", "−10 cm cintura", "Adherencia"]
   },
-
-  ───────────────────────────────────────────────────────────────────────── */
   {
-    slug: "alvaro",
-    nombre: "Álvaro",
+    /* ⚠️ ÁLVARO: revisa el titular y añade la duración cuando la tengas */
+    slug: "pepito",
+    nombre: "Pepito",
     genero: "hombre",
-    tipo: "musculo",
-    titular: "De blando a atlético",
-    duracion: "Recomposición",
-    resumen: "Mi propio cambio: de blando a atlético.",
+    tipo: "perdida",
+    titular: "De blando a definido",
+    duracion: "",
+    resumen: "Se quitó la grasa de encima y sacó forma.",
     historia:
-      "Mi propio cambio. Dejé atrás el aspecto tapado y sin forma para construir masa muscular de verdad: volumen en hombros, espalda y pecho, bajando el porcentaje de grasa y logrando esa estética fuerte y definida que llevaba años buscando. Lo que te propongo es exactamente lo que hice yo.",
-    tags: ["+ Músculo", "− Grasa", "Estética atlética"],
-    esMio: true
+      "Dejó atrás el cuerpo blando y sin forma para verse fuerte y definido. Perdió la grasa que le sobraba sin renunciar a su vida, y ahora el trabajo del gimnasio por fin se le nota.",
+    tags: ["Pérdida de grasa", "+ Definición"]
   },
   {
     slug: "juanjo",
@@ -128,6 +135,19 @@ const CAMBIOS = [
     historia:
       "Quemó la grasa rebelde de la cintura (5 cm menos) a la vez que metía músculo limpio. Se mira al espejo y ve a un tío fuerte y compacto pesando exactamente lo mismo, demostrando el poder de entrenar y comer con cabeza.",
     tags: ["Recomposición", "− Cintura", "+ Fuerza"]
+  },
+  {
+    slug: "alvaro",
+    nombre: "Álvaro",
+    genero: "hombre",
+    tipo: "musculo",
+    titular: "De blando a atlético",
+    duracion: "Recomposición",
+    resumen: "Mi propio cambio: de blando a atlético.",
+    historia:
+      "Mi propio cambio. Dejé atrás el aspecto tapado y sin forma para construir masa muscular de verdad: volumen en hombros, espalda y pecho, bajando el porcentaje de grasa y logrando esa estética fuerte y definida que llevaba años buscando. Lo que te propongo es exactamente lo que hice yo.",
+    tags: ["+ Músculo", "− Grasa", "Estética atlética"],
+    esMio: true
   }
 
   /* ── PLANTILLA PARA UN CAMBIO NUEVO ──────────────────────────────────────
@@ -139,7 +159,7 @@ const CAMBIOS = [
     titular: "−15 kg",
     pesoAntes: "88 KG",      // opcional
     pesoDespues: "73 KG",    // opcional
-    duracion: "6 meses",
+    duracion: "6 meses",     // opcional: si lo dejas vacío, no se muestra
     resumen: "Una línea corta y potente.",
     historia: "El texto largo que se lee al abrir la ficha.",
     tags: ["Etiqueta 1", "Etiqueta 2"]
