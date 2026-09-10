@@ -23,7 +23,7 @@ const CONFIG = {
     "Hola Álvaro, vengo de tu página de cambios y quiero información sobre el Método F90",
 
   // Tu usuario de Instagram, sin la @
-  instagram: "alvarocobos",
+  instagram: "_alvarotrainer",
 
   // OPCIONAL: si tienes formulario de aplicación o calendario (Typeform,
   // Calendly, Tally...), pon aquí la URL y los botones apuntarán ahí en vez
