@@ -100,17 +100,16 @@ const CAMBIOS = [
     tags: ["Recomposición", "Tonificación", "+ Músculo"]
   },
   {
-    /* ⚠️ ÁLVARO: revisa el titular y añade la duración cuando la tengas */
     slug: "antonio",
     nombre: "Antonio",
     genero: "hombre",
     tipo: "recomposicion",
-    titular: "Recomposición corporal",
+    titular: "−10 kg",
     duracion: "",
-    resumen: "Perdió grasa y ganó músculo a la vez.",
+    resumen: "Se vio los abdominales por primera vez.",
     historia:
-      "Recomposición de manual: quemó la grasa que le tapaba el trabajo del gimnasio mientras seguía construyendo músculo. El resultado es un cuerpo con forma y definición, no simplemente un cuerpo más delgado.",
-    tags: ["Recomposición", "− Grasa", "+ Definición"]
+      "Perdió 10 kilos y, por primera vez en su vida, se vio los abdominales. Y no fue solo bajar de peso: mientras se quitaba la grasa de encima siguió construyendo músculo. Por eso el resultado no es un cuerpo más delgado, es un cuerpo con forma.",
+    tags: ["Recomposición", "−10 kg", "Abdominales"]
   },
   {
     slug: "luciana",
@@ -125,17 +124,28 @@ const CAMBIOS = [
     tags: ["Primer mes", "−10 cm cintura", "Adherencia"]
   },
   {
-    /* ⚠️ ÁLVARO: revisa el titular y añade la duración cuando la tengas */
     slug: "pepito",
     nombre: "Pepito",
     genero: "hombre",
-    tipo: "perdida",
-    titular: "De blando a definido",
+    tipo: "recomposicion",
+    titular: "−5 kg",
     duracion: "",
-    resumen: "Se quitó la grasa de encima y sacó forma.",
+    resumen: "Recomposición de libro.",
     historia:
-      "Dejó atrás el cuerpo blando y sin forma para verse fuerte y definido. Perdió la grasa que le sobraba sin renunciar a su vida, y ahora el trabajo del gimnasio por fin se le nota.",
-    tags: ["Pérdida de grasa", "+ Definición"]
+      "Bajó 5 kilos, pero lo que ve en el espejo no tiene nada que ver con ese número. Perdió la grasa que le tapaba todo el trabajo del gimnasio y ganó forma a la vez. Es el mejor ejemplo de por qué la báscula, ella sola, no cuenta la historia completa.",
+    tags: ["Recomposición", "−5 kg", "+ Definición"]
+  },
+  {
+    slug: "nacho",
+    nombre: "Nacho",
+    genero: "hombre",
+    tipo: "recomposicion",
+    titular: "−2 kg, otro cuerpo",
+    duracion: "",
+    resumen: "Prácticamente el mismo peso y un cuerpo distinto.",
+    historia:
+      "Otra prueba de que la báscula miente. Bajó un par de kilos, prácticamente nada, y sin embargo se ve muchísimo mejor: perdió grasa y ganó músculo a la vez. Cuando el objetivo no es adelgazar sino cambiar de cuerpo, esto es exactamente lo que buscamos.",
+    tags: ["Recomposición", "Mismo peso", "+ Músculo"]
   },
   {
     slug: "juanjo",

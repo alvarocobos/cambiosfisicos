@@ -9,7 +9,7 @@ Cada caso busca sus dos fotos con este nombre exacto:
 El "slug" de cada caso está en assets/data/cambios.js
 
 PUESTAS (todas a 720x1200, formato 3:5):
-    jose-luis · monica · antonio · luciana · pepito · juanjo · alvaro
+    jose-luis · alvaro · monica · antonio · luciana · pepito · nacho · juanjo
 
 Cómo se prepararon: las fotos originales venían en formatos muy distintos
 (pares en horizontal, pares apilados, capturas de app...). Se separaron en
@@ -21,6 +21,9 @@ sus dos mitades y se encajaron en un marco común:
     copia difuminada y oscurecida de la propia foto.
 
 Así ninguna foto pierde cuerpo y la rejilla queda uniforme.
+
+Las de Nacho venían tumbadas (orientación EXIF 6) y hubo que girarlas
+90 grados antes de encajarlas.
 
 Si añades fotos nuevas a mano, lo ideal es que ya vengan en vertical 3:5
 (por ejemplo 720x1200) y por debajo de 150 KB.
