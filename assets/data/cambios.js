@@ -54,6 +54,8 @@ const CONFIG = {
    resumen   → una línea corta, la que se lee de un vistazo
    historia  → el texto largo, se ve al abrir la ficha
    tags      → 2 o 3 etiquetas cortas
+   esMio     → OPCIONAL. true si el cambio es tuyo, no de un cliente.
+               En vez de "Hombre" / "Mujer" pone "Mi propio cambio".
 
    Para AÑADIR un cambio nuevo: copia un bloque { ... }, pégalo con una coma
    delante y cambia los datos. Nada más.
@@ -102,10 +104,11 @@ const CAMBIOS = [
     tipo: "musculo",
     titular: "De blando a atlético",
     duracion: "Recomposición",
-    resumen: "Construyó masa muscular de verdad.",
+    resumen: "Mi propio cambio: de blando a atlético.",
     historia:
-      "Dejó atrás el aspecto tapado y sin forma para construir masa muscular de verdad. Ganó volumen en hombros, espalda y pecho, bajando el porcentaje de grasa y logrando esa estética fuerte y definida que llevaba años buscando.",
-    tags: ["+ Músculo", "− Grasa", "Estética atlética"]
+      "Mi propio cambio. Dejé atrás el aspecto tapado y sin forma para construir masa muscular de verdad: volumen en hombros, espalda y pecho, bajando el porcentaje de grasa y logrando esa estética fuerte y definida que llevaba años buscando. Lo que te propongo es exactamente lo que hice yo.",
+    tags: ["+ Músculo", "− Grasa", "Estética atlética"],
+    esMio: true
   },
   {
     slug: "juanjo",

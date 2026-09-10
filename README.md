@@ -4,6 +4,10 @@ Página de transformaciones físicas de **Álvaro Cobos / Método F90**.
 HTML, CSS y JavaScript puro: sin frameworks, sin dependencias y sin compilar nada.
 Se sube tal cual a cualquier hosting.
 
+Usa **el mismo sistema de marca que `bienvenida.alvarocobos.com`**: mismos
+colores, misma tipografía (Inter + Instrument Serif), mismos botones, mismos
+radios y el mismo logo. Las dos páginas se ven como la misma web.
+
 Incluye hombres y mujeres, con filtro para que cada visita vea los cambios
 que le interesan. La sección de testimonios en vídeo está maquetada pero
 comentada, lista para activarla cuando tengas los vídeos.
@@ -31,7 +35,7 @@ flotante) apuntan solos a WhatsApp con un mensaje ya escrito. Si rellenas
 | Archivo | Qué es | Medidas |
 |---|---|---|
 | `assets/img/alvaro.jpg` | Tu foto de perfil (la redonda de arriba) | Cuadrada, ~300×300 px |
-| `assets/img/og.jpg` | Miniatura al compartir el enlace | 1200×630 px |
+| `assets/img/og-f90.jpg` | Miniatura al compartir el enlace | 1200×630 px |
 | `assets/img/cambios/<slug>-antes.jpg` | El "antes" de cada caso | Vertical 3:4, ~900×1200 px |
 | `assets/img/cambios/<slug>-despues.jpg` | El "después" de cada caso | Vertical 3:4, ~900×1200 px |
 
@@ -71,7 +75,8 @@ los datos (al final del array tienes una plantilla comentada lista para usar):
   duracion: "7 meses",
   resumen: "Una línea corta y potente.",
   historia: "El texto largo que se ve al abrir la ficha.",
-  tags: ["Pérdida de grasa", "Cero rebote"]
+  tags: ["Pérdida de grasa", "Cero rebote"],
+  esMio: false                // true solo para tus propios cambios
 }
 ```
 
@@ -84,17 +89,22 @@ no cuenta la historia).
 
 ---
 
-## 4. Cambiar el color de marca
+## 4. La marca
 
-En `assets/css/styles.css`, las tres primeras variables:
+Los colores y medidas están al principio de `assets/css/styles.css`, copiados
+tal cual de la web de bienvenida:
 
 ```css
---accent:      #E85D04;   /* botones, titulares y detalles */
---accent-ink:  #B24400;   /* variante oscura, para texto pequeño */
---accent-soft: #FFF1E6;   /* fondos suaves */
+--bg:#0A0908;       --surface:#121110;
+--text:#F6F3F0;     --text-2:#B4ADA5;
+--accent:#FF5A00;   --accent-2:#FF8A3D;
 ```
 
-Cambia esas tres y toda la web se adapta.
+Si algún día cambias la marca en la web de bienvenida, actualiza estas
+variables aquí y el resto se adapta solo.
+
+Los logos (`assets/img/logo-f90*.png/webp`) son los mismos archivos de la
+web de bienvenida.
 
 ---
 
@@ -134,6 +144,6 @@ index.html                  la página
 assets/css/styles.css       diseño (y el color de marca)
 assets/js/main.js           lógica (no hace falta tocarlo)
 assets/data/cambios.js      ← CONTENIDO: config + casos
-assets/img/                 ← tu foto y la miniatura
+assets/img/                 ← tu foto, la miniatura y los logos
 assets/img/cambios/         ← las fotos antes/después
 ```

@@ -85,7 +85,7 @@
 
   /* ── Tarjetas ──────────────────────────────────────────────────────────── */
   function tarjeta(c, i) {
-    var genero = c.genero === "mujer" ? "Mujer" : "Hombre";
+    var genero = c.esMio ? "Mi propio cambio" : (c.genero === "mujer" ? "Mujer" : "Hombre");
     var tags = (c.tags || []).map(function (t) {
       return '<span class="tag">' + t + "</span>";
     }).join("");
@@ -156,7 +156,8 @@
       $("#lbMedia").innerHTML = '<div class="pair">' + foto(c, "antes") + foto(c, "despues") + medida(c) + "</div>";
       $("#lbTitular").textContent = c.titular;
       $("#lbName").textContent = c.nombre;
-      $("#lbMeta").textContent = c.duracion + " · " + (c.genero === "mujer" ? "Mujer" : "Hombre");
+      $("#lbMeta").textContent = c.duracion + " · " +
+        (c.esMio ? "Mi propio cambio" : (c.genero === "mujer" ? "Mujer" : "Hombre"));
       $("#lbStory").textContent = c.historia;
       lb.hidden = false;
       document.body.classList.add("lb-open");
@@ -214,13 +215,21 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  /* ── Nav con sombra al bajar ───────────────────────────────────────────── */
-  function nav() {
-    var n = $("#nav");
-    if (!n) return;
-    var tick = function () { n.classList.toggle("is-stuck", window.scrollY > 8); };
+  /* ── Cabecera fija y botón flotante ────────────────────────────────────── */
+  function scrollUI() {
+    var cab = $("#siteHeader");
+    var fab = $("#fab");
+
+    var tick = function () {
+      var y = window.scrollY;
+      if (cab) cab.classList.toggle("is-stuck", y > 8);
+      // el botón flotante aparece al pasar la primera pantalla
+      if (fab) fab.classList.toggle("is-visible", y > window.innerHeight * 0.6);
+    };
+
     tick();
     window.addEventListener("scroll", tick, { passive: true });
+    window.addEventListener("resize", tick, { passive: true });
   }
 
   /* ── Arranque ──────────────────────────────────────────────────────────── */
@@ -239,7 +248,7 @@
     filtros();
     lightbox();
     reveal();
-    nav();
+    scrollUI();
     var y = $("#year");
     if (y) y.textContent = new Date().getFullYear();
   });

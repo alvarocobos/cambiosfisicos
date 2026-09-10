@@ -4,7 +4,11 @@ IMÁGENES DE LA WEB
 alvaro.jpg   → tu foto de perfil, la que sale redonda arriba del todo.
                Cuadrada, unos 300x300 px.
 
-og.jpg       → la miniatura que se ve al compartir el enlace por
+og-f90.jpg   → la miniatura que se ve al compartir el enlace por
                WhatsApp o redes. 1200x630 px.
+               (puedes copiar la misma de bienvenida-programa)
+
+logo-f90*    → los logos de la marca, copiados de la web de bienvenida.
+               No hace falta tocarlos.
 
 cambios/     → las fotos antes/después (mira el LEEME de dentro).
