@@ -85,6 +85,11 @@ const CAMBIOS = [
       "Pesa prácticamente lo mismo que cuando empezó, pero su cuerpo es completamente distinto. Perdió la grasa blanda, tonificó al máximo y ganó músculo firme. Pasó de fijarse en un número absurdo en la báscula a verse apretada, fuerte y espectacular frente al espejo.",
     tags: ["Recomposición", "Tonificación", "+ Músculo"]
   },
+  /* ── LUCIANA: apagada hasta tener sus fotos ─────────────────────────────
+     Su tarjeta saldría con los recuadros de "falta la foto" a la vista de
+     todo el mundo. En cuanto subas luciana-antes.jpg y luciana-despues.jpg
+     a assets/img/cambios/, borra esta línea y la del final del bloque.
+
   {
     slug: "luciana",
     nombre: "Luciana",
@@ -97,6 +102,8 @@ const CAMBIOS = [
       "En solo su primer mes se quitó 10 cm de cintura de encima. Los pantalones le empezaron a bailar de golpe y vio desde el día uno que este sistema sí funcionaba para ella.",
     tags: ["Primer mes", "−10 cm cintura", "Adherencia"]
   },
+
+  ───────────────────────────────────────────────────────────────────────── */
   {
     slug: "alvaro",
     nombre: "Álvaro",
