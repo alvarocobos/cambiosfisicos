@@ -155,7 +155,6 @@
 
     function abrir(c) {
       $("#lbMedia").innerHTML = '<div class="pair">' + foto(c, "antes") + foto(c, "despues") + medida(c) + "</div>";
-      $("#lbTitular").textContent = c.titular;
       $("#lbName").textContent = c.nombre;
       $("#lbMeta").textContent =
         (c.duracion ? c.duracion + " · " : "") +
