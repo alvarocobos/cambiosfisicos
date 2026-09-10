@@ -37,33 +37,28 @@ Con esto ya funciona. Si te vale esa dirección, has terminado.
 
 ---
 
-## Paso 2 — Ponerle tu subdominio (opcional)
+## Paso 2 — El subdominio: ya está hecho
 
-Si la quieres en algo tipo `cambios.alvarocobos.com`:
+La web va a responder en **https://transformaciones.alvarocobos.com**
 
-**a) Crea el archivo CNAME**
+Las dos piezas ya están puestas:
 
-En la raíz del repositorio, un archivo llamado `CNAME` (sin extensión) con una
-sola línea: el subdominio que hayas elegido. Por ejemplo:
+- **El DNS**, en Hostinger: un registro `CNAME` con nombre `transformaciones`
+  apuntando a `alvarocobos.github.io`. Comprobado y propagado.
+- **El archivo `CNAME`** en la raíz de este repositorio, que es lo que le dice
+  a GitHub en qué dominio tiene que responder.
 
-```
-cambios.alvarocobos.com
-```
+Solo queda confirmarlo en GitHub: en Settings › Pages, el campo
+**Custom domain** debería rellenarse solo con `transformaciones.alvarocobos.com`
+al activar Pages (lo lee del archivo CNAME). Si no, lo escribes y guardas.
 
-**b) Apunta el DNS**
+Después marca **Enforce HTTPS**. Puede tardar un rato en habilitarse mientras
+GitHub emite el certificado; es normal que durante unos minutos dé aviso de
+sitio no seguro.
 
-Donde tengas el dominio (el mismo sitio donde configuraste
-`bienvenida.alvarocobos.com`), añade un registro:
-
-| Tipo | Nombre | Valor |
-|---|---|---|
-| CNAME | `cambios` | `alvarocobos.github.io` |
-
-**c) Confírmalo en GitHub**
-
-Vuelve a Settings › Pages, escribe el subdominio en **Custom domain**, guarda
-y marca **Enforce HTTPS** cuando te deje (puede tardar un rato en habilitarse
-mientras se emite el certificado).
+**Ojo:** no toques la sección "Subdominios" del hosting de Hostinger. Eso crea
+una carpeta en su servidor con un registro A propio y pisaría esta
+configuración. Lo que usamos es el registro CNAME de la zona DNS.
 
 ---
 
