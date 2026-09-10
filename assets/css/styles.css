@@ -301,16 +301,44 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
 .shot--before .shot__tag{left:10px}
 .shot--after .shot__tag{right:10px;background:var(--accent);color:var(--ink);border-color:var(--accent)}
 
-/* Chapa central con la medida */
+/* Chapa central con la medida.
+   Entra animada al aparecer en pantalla, un brillo la recorre y después se
+   desvanece para dejar ver la foto entera. Vuelve al pasar el ratón. */
 .medida{
-  position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;
+  position:absolute;left:50%;bottom:14px;z-index:3;
   display:flex;border-radius:9px;overflow:hidden;white-space:nowrap;
   max-width:calc(100% - 20px);box-shadow:0 10px 26px -8px rgba(0,0,0,.9);
+  opacity:0;transform:translate(-50%,18px) scale(.88);
+  transition:opacity .6s var(--ease),transform .6s var(--ease);
+  pointer-events:none;
 }
 .medida span{padding:7px 13px;font-size:13px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
 .medida .m-a{background:rgba(10,9,8,.92);color:var(--text);border:1px solid var(--line-2);border-right:0}
 .medida .m-b{background:var(--accent);color:var(--ink)}
 .medida--solo span{background:var(--accent);color:var(--ink);padding:8px 16px}
+
+/* el brillo que la recorre al entrar */
+.medida::after{
+  content:"";position:absolute;inset:0;z-index:4;pointer-events:none;
+  background:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.5) 50%,transparent 64%);
+  transform:translateX(-130%);
+}
+
+/* 1. aparece */
+.card.is-vista .medida,
+.lb__media.is-vista .medida{opacity:1;transform:translate(-50%,0) scale(1)}
+.card.is-vista .medida::after,
+.lb__media.is-vista .medida::after{animation:brillo 1.15s var(--ease) .4s 1}
+@keyframes brillo{to{transform:translateX(130%)}}
+
+/* 2. se aparta, para que la foto se vea al completo */
+.card.chapa-fuera .medida,
+.lb__media.chapa-fuera .medida{opacity:0;transform:translate(-50%,-8px) scale(1.05)}
+
+/* 3. vuelve si la persona se interesa por la tarjeta */
+.card:hover .medida,
+.card:focus-visible .medida,
+.lb__media:hover .medida{opacity:1;transform:translate(-50%,0) scale(1)}
 
 .card__body{display:flex;flex-direction:column;flex:1;padding:19px 20px 21px}
 .card__name{font-size:19px;font-weight:600;letter-spacing:-.02em;color:var(--text);margin-bottom:2px}
@@ -529,4 +557,7 @@ body.lb-open{overflow:hidden}
   .linea > span{transform:none;animation:none}
   .wa__onda{display:none}
   .wa__nucleo{animation:none}
+  .medida{opacity:1;transform:translate(-50%,0)}
+  .card.chapa-fuera .medida,.lb__media.chapa-fuera .medida{opacity:1;transform:translate(-50%,0)}
+  .medida::after{display:none}
 }

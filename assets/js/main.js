@@ -140,6 +140,11 @@
             void card.offsetWidth;
             card.style.animation = "";
             card.style.animationDelay = (n * 45) + "ms";
+            // y la chapa se vuelve a anunciar
+            card.classList.remove("is-vista", "chapa-fuera");
+            (function (c, ms) {
+              setTimeout(function () { anunciar(c); }, ms);
+            })(card, 120 + n * 45);
           }
         });
         if (vacio) vacio.hidden = visibles > 0;
@@ -160,9 +165,13 @@
         (c.duracion ? c.duracion + " · " : "") +
         (c.esMio ? "Mi propio cambio" : (c.genero === "mujer" ? "Mujer" : "Hombre"));
       $("#lbStory").textContent = c.historia;
+      var media = $("#lbMedia");
+      media.classList.remove("is-vista", "chapa-fuera");
       lb.hidden = false;
       document.body.classList.add("lb-open");
       $(".lb__close").focus();
+      // se deja ver la medida y enseguida se aparta, para no tapar la foto
+      requestAnimationFrame(function () { anunciar(media, 1800); });
     }
 
     function cerrar() {
@@ -196,6 +205,32 @@
       ultimoFoco = card;
       abrir(CAMBIOS[+card.dataset.i]);
     });
+  }
+
+  /* ── La chapa de la medida ─────────────────────────────────────────────── */
+  /* Aparece cuando la tarjeta entra en pantalla, se deja leer un momento y
+     después se aparta para no tapar la foto. Vuelve al pasar el ratón. */
+  var ESPERA_CHAPA = 2200;
+
+  function anunciar(el, espera) {
+    el.classList.add("is-vista");
+    setTimeout(function () { el.classList.add("chapa-fuera"); }, espera || ESPERA_CHAPA);
+  }
+
+  function chapas() {
+    var tarjetas = $$(".card");
+    if (!("IntersectionObserver" in window)) {
+      tarjetas.forEach(function (c) { c.classList.add("is-vista"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        anunciar(en.target);
+      });
+    }, { threshold: 0.35 });
+    tarjetas.forEach(function (c) { io.observe(c); });
   }
 
   /* ── Aparición al hacer scroll ─────────────────────────────────────────── */
@@ -240,6 +275,7 @@
     pintarGrid();
     aplicarCTAs();
     filtros();
+    chapas();
     lightbox();
     reveal();
     scrollUI();
