@@ -215,21 +215,14 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  /* ── Cabecera fija y botón flotante ────────────────────────────────────── */
+  /* ── Cabecera fija ─────────────────────────────────────────────────────── */
+  /* El botón de WhatsApp está siempre visible, no depende del scroll. */
   function scrollUI() {
     var cab = $("#siteHeader");
-    var fab = $("#fab");
-
-    var tick = function () {
-      var y = window.scrollY;
-      if (cab) cab.classList.toggle("is-stuck", y > 8);
-      // el botón flotante aparece al pasar la primera pantalla
-      if (fab) fab.classList.toggle("is-visible", y > window.innerHeight * 0.6);
-    };
-
+    if (!cab) return;
+    var tick = function () { cab.classList.toggle("is-stuck", window.scrollY > 8); };
     tick();
     window.addEventListener("scroll", tick, { passive: true });
-    window.addEventListener("resize", tick, { passive: true });
   }
 
   /* ── Arranque ──────────────────────────────────────────────────────────── */
