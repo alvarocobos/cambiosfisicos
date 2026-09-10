@@ -16,7 +16,7 @@ const CONFIG = {
 
   // Tu número de WhatsApp con prefijo de país y SIN espacios, + ni guiones.
   // Ejemplo España: 34600112233
-  whatsapp: "34600000000",
+  whatsapp: "34633164871",
 
   // Mensaje con el que se abre el chat de WhatsApp al pulsar el botón.
   mensajeWhatsapp:
@@ -79,12 +79,12 @@ const CAMBIOS = [
     nombre: "Álvaro",
     genero: "hombre",
     tipo: "musculo",
-    titular: "De blando a atlético",
-    duracion: "Recomposición",
-    resumen: "Mi propio cambio: de blando a atlético.",
+    titular: "De flaco a grande",
+    duracion: "De mis inicios a hoy",
+    resumen: "Mi propio cambio: empecé siendo un chico extremadamente delgado.",
     historia:
-      "Mi propio cambio. Dejé atrás el aspecto tapado y sin forma para construir masa muscular de verdad: volumen en hombros, espalda y pecho, bajando el porcentaje de grasa y logrando esa estética fuerte y definida que llevaba años buscando. Lo que te propongo es exactamente lo que hice yo.",
-    tags: ["+ Músculo", "− Grasa", "Estética atlética"],
+      "Mi historia no empieza donde empieza la mayoría en este sector: yo no partía de sobrepeso, partía de estar extremadamente delgado. La falta de confianza que me daba mi físico fue justo lo que me metió de lleno en el entrenamiento y la alimentación. Y a medida que fui construyendo el cuerpo que ves en la segunda foto, cambió todo lo demás: la autoestima, la seguridad, cómo me relacionaba y cómo me veía a mí mismo. Entre esas dos fotos hay años haciendo exactamente lo que te propongo a ti.",
+    tags: ["+ Músculo", "+ Volumen", "Constancia"],
     esMio: true
   },
   {
