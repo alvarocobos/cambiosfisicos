@@ -147,6 +147,26 @@ const CAMBIOS = [
       "Otra prueba de que la báscula miente. Bajó un par de kilos, prácticamente nada, y sin embargo se ve muchísimo mejor: perdió grasa y ganó músculo a la vez. Cuando el objetivo no es adelgazar sino cambiar de cuerpo, esto es exactamente lo que buscamos.",
     tags: ["Recomposición", "Mismo peso", "+ Músculo"]
   },
+
+  /* ── JUAN: apagado hasta confirmar que no es el mismo cliente que Juanjo ──
+     En Drive, JUAN.jpg y Juanjo.jpg son el MISMO archivo byte a byte. Sus
+     fotos ya están recortadas y listas en assets/img/cambios/. Para
+     activarlo, borra esta línea y la del final del bloque.
+
+  {
+    slug: "juan",
+    nombre: "Juan",
+    genero: "hombre",
+    tipo: "perdida",
+    titular: "−5 kg",
+    duracion: "",
+    resumen: "Perdió la grasa y le salió el cuerpo que ya tenía debajo.",
+    historia:
+      "Cinco kilos menos, pero lo que cambia es todo lo demás: se le marca el pecho, se le ve la cintura y aparece la forma que el músculo ya tenía debajo de la grasa. Cuando hay masa muscular construida, quitar la grasa es lo que la pone a la vista.",
+    tags: ["Pérdida de grasa", "−5 kg", "+ Definición"]
+  },
+
+  ───────────────────────────────────────────────────────────────────────── */
   {
     slug: "juanjo",
     nombre: "Juanjo",
