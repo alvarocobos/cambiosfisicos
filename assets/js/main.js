@@ -46,6 +46,12 @@
 
   // Se llama desde el atributo onerror de cada <img>
   window.F90 = {
+    // Añade el sello de versión a una ruta, para que al reemplazar una foto
+    // el navegador no siga enseñando la copia guardada.
+    url: function (ruta) {
+      return ruta + (window.F90_V ? "?v=" + window.F90_V : "");
+    },
+
     ph: function (img) {
       var cont = img.parentNode;
       var ruta = img.getAttribute("data-src") || img.getAttribute("src");
@@ -63,9 +69,10 @@
   function foto(c, momento) {
     var esDespues = momento === "despues";
     var ruta = "assets/img/cambios/" + c.slug + "-" + momento + ".jpg";
+    var src = F90.url(ruta);
     var alt = (esDespues ? "Después" : "Antes") + " — " + c.nombre + ", Método F90";
     return '<figure class="shot ' + (esDespues ? "shot--after" : "shot--before") + '">' +
-             '<img src="' + ruta + '" data-src="' + ruta + '" alt="' + alt + '" ' +
+             '<img src="' + src + '" data-src="' + ruta + '" alt="' + alt + '" ' +
                   'loading="lazy" decoding="async" ' +
                   'onerror="this.dataset.err=1; if(window.F90) F90.ph(this);">' +
              '<figcaption class="shot__tag">' + (esDespues ? "Después" : "Antes") + "</figcaption>" +

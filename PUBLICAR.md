@@ -89,5 +89,7 @@ python3 herramientas/sellar-version.py
 Al cambiar la dirección, el navegador se ve obligado a bajarse la versión
 nueva y nadie tiene que recargar forzando.
 
-**Las fotos no lo necesitan:** cada una tiene un nombre distinto, así que
-una foto nueva ya estrena dirección por sí sola.
+**Las fotos también lo llevan.** Una foto *nueva* estrena nombre y por
+tanto dirección, pero si *reemplazas* una existente el nombre no cambia y
+el navegador seguiría enseñando la vieja. El script pone el mismo sello a
+las fotos, así que con ejecutarlo vale para todo.

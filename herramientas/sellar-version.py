@@ -16,12 +16,17 @@ p = raiz / "index.html"
 s = p.read_text(encoding="utf-8")
 
 sello = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d%H%M")
-archivos = ["assets/css/styles.css", "assets/data/cambios.js", "assets/js/main.js"]
+archivos = ["assets/css/styles.css", "assets/data/cambios.js", "assets/js/main.js",
+            "assets/img/alvaro.jpg", "assets/img/og-f90.jpg"]
 
 for a in archivos:
     s = re.sub(re.escape(a) + r'(\?v=\d+)?', a + "?v=" + sello, s)
+
+# el mismo sello para las fotos, que se cargan desde el JavaScript
+s = re.sub(r'window\.F90_V\s*=\s*"\d*"', f'window.F90_V="{sello}"', s)
 
 p.write_text(s, encoding="utf-8")
 print(f"Sello de versión: {sello}")
 for a in archivos:
     print(f"  {a}?v={sello}")
+print("  y las fotos, vía window.F90_V")
