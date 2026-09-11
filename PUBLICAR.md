@@ -67,3 +67,27 @@ configuración. Lo que usamos es el registro CNAME de la zona DNS.
 Cualquier cambio que subas a `main` se publica solo en un par de minutos.
 Para añadir un cambio nuevo: editas `assets/data/cambios.js`, subes las dos
 fotos y ya está.
+
+### Si has cambiado algo y no lo ves
+
+El navegador guarda una copia de los archivos de diseño y contenido, y
+sigue enseñándola aunque la web ya esté actualizada. Por eso los enlaces
+del `index.html` llevan un sello de versión al final:
+
+```html
+<link rel="stylesheet" href="assets/css/styles.css?v=202609110501">
+<script src="assets/data/cambios.js?v=202609110501"></script>
+```
+
+Cada vez que toques el CSS, `cambios.js` o `main.js`, actualiza ese sello
+antes de subirlo:
+
+```bash
+python3 herramientas/sellar-version.py
+```
+
+Al cambiar la dirección, el navegador se ve obligado a bajarse la versión
+nueva y nadie tiene que recargar forzando.
+
+**Las fotos no lo necesitan:** cada una tiene un nombre distinto, así que
+una foto nueva ya estrena dirección por sí sola.
