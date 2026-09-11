@@ -113,10 +113,25 @@
            "</article>";
   }
 
+  /* Cierra la galería invitando a quien la está mirando. No es una tarjeta
+     de cambio, así que los filtros no la tocan: se queda siempre al final. */
+  function cierre() {
+    return '<article class="cierre reveal">' +
+             '<p class="cierre__mas">Y muchos más</p>' +
+             '<p class="cierre__sub">Estos son solo algunos. Al resto los vas a ' +
+               'conocer dentro del programa.</p>' +
+             '<h3 class="cierre__preg">¿Quieres ser <span class="accent">el ' +
+               'próximo</span> en aparecer aquí?</h3>' +
+             '<a class="btn btn--primary js-cta" href="#contacto">' +
+               'Empezar mi cambio <svg class="ico ico--arrow"><use href="#i-arrow"/></svg>' +
+             "</a>" +
+           "</article>";
+  }
+
   function pintarGrid() {
     var grid = $("#grid");
     if (!grid) return;
-    grid.innerHTML = CAMBIOS.map(tarjeta).join("");
+    grid.innerHTML = CAMBIOS.map(tarjeta).join("") + cierre();
   }
 
   /* ── Filtros ───────────────────────────────────────────────────────────── */
