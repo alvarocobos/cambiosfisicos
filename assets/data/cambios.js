@@ -148,16 +148,28 @@ const CAMBIOS = [
     tags: ["Recomposición", "−5 kg", "+ Definición"]
   },
   {
+    slug: "silvia",
+    nombre: "Silvia",
+    genero: "mujer",
+    tipo: "recomposicion",
+    titular: "Recomposición corporal",
+    duracion: "",
+    resumen: "Perdió grasa y ganó tono al mismo tiempo.",
+    historia:
+      "Recomposición de libro: perdió la grasa que le sobraba y ganó tono y músculo a la vez. El cambio no está en el número de la báscula, está en la forma: la cintura más estrecha, las piernas más firmes y otra postura. Es justo el cambio que busca la mayoría de las mujeres que llegan aquí.",
+    tags: ["Recomposición", "Tonificación", "− Grasa"]
+  },
+  {
     slug: "nacho",
     nombre: "Nacho",
     genero: "hombre",
     tipo: "recomposicion",
-    titular: "−2 kg, otro cuerpo",
+    titular: "−2 kg",
     duracion: "",
-    resumen: "Prácticamente el mismo peso y un cuerpo distinto.",
+    resumen: "Dos kilos en la báscula y un cambio que se ve muchísimo más.",
     historia:
-      "Otra prueba de que la báscula miente. Bajó un par de kilos, prácticamente nada, y sin embargo se ve muchísimo mejor: perdió grasa y ganó músculo a la vez. Cuando el objetivo no es adelgazar sino cambiar de cuerpo, esto es exactamente lo que buscamos.",
-    tags: ["Recomposición", "Mismo peso", "+ Músculo"]
+      "Otra prueba de que la báscula no cuenta toda la historia: bajó solo un par de kilos y, aun así, se le ve mucho más definido. Perdió grasa y ganó músculo a la vez, que es exactamente lo que buscamos cuando el objetivo no es adelgazar, sino cambiar la forma del cuerpo.",
+    tags: ["Recomposición", "−2 kg", "+ Definición"]
   },
 
   {
