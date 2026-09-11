@@ -9,7 +9,8 @@ Cada caso busca sus dos fotos con este nombre exacto:
 El "slug" de cada caso está en assets/data/cambios.js
 
 PUESTAS (todas a 720x1200, formato 3:5):
-    jose-luis · alvaro · monica · antonio · luciana · pepito · nacho · juanjo
+    jose-luis · alvaro · juan · monica · antonio
+    luciana · pepito · nacho · juanjo
 
 Cómo se prepararon: las fotos originales venían en formatos muy distintos
 (pares en horizontal, pares apilados, capturas de app...). Se separaron en
