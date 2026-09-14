@@ -113,10 +113,13 @@
            "</article>";
   }
 
-  /* Cierra la galería invitando a quien la está mirando. No es una tarjeta
-     de cambio, así que los filtros no la tocan: se queda siempre al final. */
-  function cierre() {
-    return '<article class="cierre reveal">' +
+  /* Cierra el bloque invitando a quien lo está mirando. Va detrás de los
+     testimonios: primero las pruebas, después la invitación. */
+  function pintarCierre() {
+    var cont = $("#cierre");
+    if (!cont) return;
+    cont.innerHTML =
+           '<article class="cierre reveal">' +
              '<p class="cierre__mas">Y muchos más</p>' +
              '<p class="cierre__sub">Estos son solo algunos. Al resto los vas a ' +
                'conocer dentro del programa.</p>' +
@@ -131,7 +134,7 @@
   function pintarGrid() {
     var grid = $("#grid");
     if (!grid) return;
-    grid.innerHTML = CAMBIOS.map(tarjeta).join("") + cierre();
+    grid.innerHTML = CAMBIOS.map(tarjeta).join("");
   }
 
   /* ── Filtros ───────────────────────────────────────────────────────────── */
@@ -241,9 +244,17 @@
       return '<figure class="testi reveal">' +
                '<button class="testi__marco" data-yt="' + t.youtube + '" ' +
                  'aria-label="Ver el testimonio de ' + t.nombre + '">' +
-                 '<img src="https://i.ytimg.com/vi/' + t.youtube + '/hqdefault.jpg" ' +
+                 // fondo difuminado, para rellenar los lados del marco ancho
+                 '<img class="testi__fondo" aria-hidden="true" ' +
+                   'src="https://i.ytimg.com/vi/' + t.youtube + '/hqdefault.jpg" ' +
                    'alt="" loading="lazy" decoding="async" ' +
                    'onerror="this.style.display=\'none\'">' +
+                 // el vídeo, centrado y en vertical
+                 '<span class="testi__centro">' +
+                   '<img src="https://i.ytimg.com/vi/' + t.youtube + '/hqdefault.jpg" ' +
+                     'alt="" loading="lazy" decoding="async" ' +
+                     'onerror="this.style.display=\'none\'">' +
+                 "</span>" +
                  '<span class="testi__play" aria-hidden="true">' +
                    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>' +
                  "</span>" +
@@ -381,6 +392,7 @@
     filtros();
     vistas();
     pintarTestimonios();
+    pintarCierre();
     chapas();
     lightbox();
     reveal();

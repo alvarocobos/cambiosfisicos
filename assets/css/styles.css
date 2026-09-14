@@ -107,6 +107,11 @@ h3{font-size:19px;letter-spacing:-.015em}
 .wrap--narrow{max-width:760px}
 
 section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
+/* Los cambios y los testimonios son el mismo bloque de pruebas: se juntan
+   para que no parezcan dos secciones sin relación. */
+#cambios{padding-bottom:clamp(30px,4vw,46px)}
+#testimonios{padding-top:clamp(24px,3vw,38px)}
+#cierre{margin-top:clamp(30px,4.5vw,50px)}
 .section{padding-block:var(--sect);position:relative}
 .section--soft{background:var(--bg-2);border-block:1px solid var(--line)}
 
@@ -162,14 +167,25 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
 @media (min-width:900px){ .nav-links{display:flex} }
 
 /* ── Portada ─────────────────────────────────────────────────────────────── */
-.hero{position:relative;overflow:hidden;padding-block:clamp(28px,5vw,64px) clamp(48px,7vw,90px)}
+.hero{position:relative;overflow:hidden;padding-block:clamp(26px,4.5vw,54px) clamp(48px,7vw,90px)}
 .hero::before{
   content:"";position:absolute;inset:-40% -20% auto -20%;height:130%;pointer-events:none;
   background:
     radial-gradient(58% 46% at 50% 2%, var(--accent-22), transparent 66%),
     radial-gradient(40% 38% at 86% 30%, var(--accent-08), transparent 62%);
 }
-.hero__grid{position:relative;display:grid;gap:0;text-align:center;justify-items:center}
+.hero__inner{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center}
+
+/* Foto de Álvaro: redonda y discreta, solo para poner cara al método */
+.avatar{
+  position:relative;width:clamp(104px,17vw,132px);aspect-ratio:1;
+  border-radius:50%;overflow:hidden;margin:0 0 20px;
+  border:2px solid var(--line-2);
+  box-shadow:0 0 0 5px rgba(255,90,0,.10),var(--sh-2);
+}
+.avatar img,.avatar .ph{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.avatar .ph{position:absolute;inset:0}
+.avatar .ph b,.avatar .ph code{display:none}
 
 /* Titular grande, en mayúsculas, con revelado al abrir */
 .titular{
@@ -195,21 +211,6 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
   font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text);
 }
 
-/* Foto de Álvaro */
-.foto{position:relative;width:100%;max-width:300px;margin:clamp(16px,3vw,26px) 0 clamp(18px,3vw,28px)}
-.foto::before{
-  content:"";position:absolute;inset:8% -12% -6% -12%;z-index:0;pointer-events:none;
-  background:radial-gradient(50% 50% at 50% 55%, var(--accent-22), transparent 70%);
-  filter:blur(6px);
-}
-.foto img,.foto .ph{
-  position:relative;z-index:1;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;
-  border-radius:var(--r-xl);
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 66%,transparent 100%);
-  mask-image:linear-gradient(180deg,#000 0%,#000 66%,transparent 100%);
-}
-.foto .ph{position:relative;inset:auto;aspect-ratio:4/5}
-
 .hero__sub{max-width:56ch;margin:0 auto 26px}
 
 .checks{display:grid;gap:13px;max-width:520px;margin:0 auto 30px;text-align:left}
@@ -221,36 +222,8 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
 .hero__note{margin:16px 0 0;font-size:11px;font-weight:600;
   letter-spacing:.16em;text-transform:uppercase;color:var(--text-3)}
 
-/* En pantallas anchas: el titular ocupa todo el ancho (así puede ser
-   mucho más grande) y la foto acompaña al texto de apoyo. */
 @media (min-width:900px){
-  .hero__grid{
-    grid-template-columns:1.04fr .96fr;
-    column-gap:clamp(36px,5vw,72px);
-    text-align:left;justify-items:start;align-items:start;
-    grid-template-areas:
-      "chapa  chapa"
-      "titulo titulo"
-      "sub    foto"
-      "checks foto"
-      "cta    foto"
-      "nota   foto"
-      ".      foto";
-    /* la última fila se queda el espacio sobrante, para que el texto no
-       se separe al ser la foto más alta que la columna de la izquierda */
-    grid-template-rows:auto auto auto auto auto auto 1fr;
-  }
-  .titular{font-size:clamp(58px,7.4vw,104px);margin-bottom:.22em}
-  .hero__grid > .pill{grid-area:chapa}
-  .hero__grid > .titular{grid-area:titulo}
-  .hero__grid > .foto{
-    grid-area:foto;max-width:380px;margin:0;justify-self:end;align-self:start;
-  }
-  .foto img,.foto .ph{aspect-ratio:3/4}
-  .hero__grid > .hero__sub{grid-area:sub;margin-inline:0}
-  .hero__grid > .checks{grid-area:checks;margin-inline:0}
-  .hero__grid > .hero__cta{grid-area:cta;justify-content:flex-start}
-  .hero__grid > .hero__note{grid-area:nota}
+  .titular{font-size:clamp(54px,7vw,96px)}
   .btn--wide{width:auto;max-width:none}
 }
 
@@ -430,30 +403,44 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
   color:var(--text-3);opacity:.8;word-break:break-all;line-height:1.45}
 
 /* ── Testimonios en vídeo ───────────────────────────────────────────────── */
-/* Columnas acotadas: un vídeo vertical estirado a todo lo ancho quedaría
-   larguísimo, así que cada uno no pasa de 270 px y se centran. */
-.testis{display:grid;gap:clamp(16px,2.4vw,26px);justify-content:center;
-  grid-template-columns:repeat(auto-fit,minmax(220px,270px))}
+/* Marco apaisado con el vídeo vertical centrado: los lados se rellenan con
+   una copia difuminada del propio fotograma, en vez de dejar barras negras. */
+.testis{display:grid;gap:clamp(20px,3vw,30px);max-width:760px;margin-inline:auto}
 .testi{margin:0}
 .testi__marco{
-  position:relative;display:block;width:100%;aspect-ratio:9/16;padding:0;
+  position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;
   border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
   background:var(--surface-2);cursor:pointer;
-  transition:transform var(--mid),border-color var(--mid),box-shadow var(--mid);
+  box-shadow:0 0 0 1px rgba(255,90,0,.10),0 18px 50px -24px rgba(255,90,0,.35);
+  transition:transform var(--mid),box-shadow var(--mid);
 }
-.testi__marco:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--sh-3)}
-.testi__marco img{width:100%;height:100%;object-fit:cover}
-.testi__marco iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.testi__marco:hover{transform:translateY(-4px);
+  box-shadow:0 0 0 1px rgba(255,90,0,.28),0 24px 60px -22px rgba(255,90,0,.55)}
+
+.testi__fondo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.2);filter:blur(26px) brightness(.42) saturate(1.1);
+}
+.testi__centro{
+  position:absolute;left:50%;top:0;height:100%;aspect-ratio:9/16;
+  transform:translateX(-50%);overflow:hidden;
+  box-shadow:0 0 34px rgba(0,0,0,.55);
+}
+.testi__centro img{width:100%;height:100%;object-fit:cover}
+.testi__marco iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
+
 .testi__play{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:62px;height:62px;border-radius:50%;display:grid;place-items:center;
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
   background:var(--accent);color:var(--ink);
-  box-shadow:0 10px 30px -8px rgba(0,0,0,.8),0 0 0 6px rgba(255,90,0,.18);
+  box-shadow:0 10px 30px -8px rgba(0,0,0,.85),0 0 0 7px rgba(255,90,0,.20);
   transition:transform var(--mid);
 }
-.testi__marco:hover .testi__play{transform:translate(-50%,-50%) scale(1.08)}
-.testi__play svg{width:28px;height:28px;margin-left:3px}
-.testi__pie{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin-top:13px}
+.testi__marco:hover .testi__play{transform:translate(-50%,-50%) scale(1.09)}
+.testi__play svg{width:29px;height:29px;margin-left:3px}
+
+.testi__pie{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;
+  gap:9px;margin-top:14px;text-align:center}
 .testi__nombre{font-size:17px;font-weight:600;letter-spacing:-.02em;color:var(--text)}
 .testi__dato{font-size:11px;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;color:var(--accent-2)}
