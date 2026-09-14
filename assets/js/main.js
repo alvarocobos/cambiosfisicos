@@ -241,19 +241,23 @@
     if (!cont || typeof TESTIMONIOS === "undefined" || !TESTIMONIOS.length) return;
 
     cont.innerHTML = TESTIMONIOS.map(function (t, i) {
+      var mini = "https://i.ytimg.com/vi/" + t.youtube + "/";
       return '<figure class="testi reveal">' +
                '<button class="testi__marco" data-yt="' + t.youtube + '" ' +
                  'aria-label="Ver el testimonio de ' + t.nombre + '">' +
-                 // fondo difuminado, para rellenar los lados del marco ancho
+                 // fondo difuminado, para rellenar los lados del marco ancho:
+                 // hqdefault viene en 16:9, justo lo que mide el marco
                  '<img class="testi__fondo" aria-hidden="true" ' +
-                   'src="https://i.ytimg.com/vi/' + t.youtube + '/hqdefault.jpg" ' +
+                   'src="' + mini + 'hqdefault.jpg" ' +
                    'alt="" loading="lazy" decoding="async" ' +
                    'onerror="this.style.display=\'none\'">' +
-                 // el vídeo, centrado y en vertical
+                 // el vídeo, centrado y en vertical: oardefault viene con la
+                 // proporción original (vertical en los Shorts). Si YouTube no
+                 // la tiene, escondemos la franja y queda solo el fondo.
                  '<span class="testi__centro">' +
-                   '<img src="https://i.ytimg.com/vi/' + t.youtube + '/hqdefault.jpg" ' +
+                   '<img src="' + mini + 'oardefault.jpg" ' +
                      'alt="" loading="lazy" decoding="async" ' +
-                     'onerror="this.style.display=\'none\'">' +
+                     'onerror="this.parentNode.style.display=\'none\'">' +
                  "</span>" +
                  '<span class="testi__play" aria-hidden="true">' +
                    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>' +
