@@ -127,6 +127,21 @@
       return ruta + (window.F90_V ? "?v=" + window.F90_V : "");
     },
 
+    // Miniatura del testimonio. YouTube da oardefault.jpg con la proporción
+    // original (vertical en los Shorts), pero no la tiene para todos los
+    // vídeos. Si falla, se pasa a hqdefault.jpg, que es 16:9 igual que el
+    // marco, y la franja se abre para ocuparlo entero. Así el recuadro nunca
+    // se queda vacío.
+    mini: function (img) {
+      var marco = img.parentNode && img.parentNode.parentNode;
+      if (marco && !marco.dataset.mini) {
+        marco.dataset.mini = "16x9";
+        img.src = img.src.replace("oardefault", "hqdefault");
+        return;
+      }
+      img.style.display = "none";
+    },
+
     ph: function (img) {
       var cont = img.parentNode;
       var ruta = img.getAttribute("data-src") || img.getAttribute("src");
@@ -326,13 +341,11 @@
                    'src="' + mini + 'hqdefault.jpg" ' +
                    'alt="" loading="lazy" decoding="async" ' +
                    'onerror="this.style.display=\'none\'">' +
-                 // el vídeo, centrado y en vertical: oardefault viene con la
-                 // proporción original (vertical en los Shorts). Si YouTube no
-                 // la tiene, escondemos la franja y queda solo el fondo.
+                 // el vídeo, centrado y en vertical
                  '<span class="testi__centro">' +
                    '<img src="' + mini + 'oardefault.jpg" ' +
                      'alt="" loading="lazy" decoding="async" ' +
-                     'onerror="this.parentNode.style.display=\'none\'">' +
+                     'onerror="if(window.F90) F90.mini(this);">' +
                  "</span>" +
                  '<span class="testi__play" aria-hidden="true">' +
                    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>' +
