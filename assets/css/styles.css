@@ -265,7 +265,25 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
   font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.45}
 
 /* ── Filtros ─────────────────────────────────────────────────────────────── */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(24px,3vw,34px)}
+.controles{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+  justify-content:space-between;margin-bottom:clamp(24px,3vw,34px);
+}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+
+.vistas{display:flex;gap:4px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);border-radius:12px;padding:4px}
+.vista{
+  display:inline-flex;align-items:center;gap:7px;
+  background:none;border:0;border-radius:9px;color:var(--text-3);
+  min-height:34px;padding:0 12px;font-size:13px;font-weight:600;cursor:pointer;
+  transition:background var(--fast),color var(--fast);
+}
+.vista svg{width:16px;height:16px}
+.vista:hover{color:var(--text-2)}
+.vista.is-active{background:var(--accent-14);color:var(--accent-2)}
+@media (max-width:430px){ .vista span{display:none} .vista{padding:0 10px} }
+
 .filter{
   background:rgba(255,255,255,.03);border:1px solid var(--line-2);color:var(--text-2);
   min-height:42px;padding:0 18px;border-radius:10px;
@@ -358,6 +376,22 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
 .card__more span{transition:transform var(--fast)}
 .card:hover .card__more span{transform:translateX(4px)}
 
+/* ── Vista en lista ─────────────────────────────────────────────────────── */
+/* Uno debajo de otro. En pantalla ancha la foto va al lado del texto; en
+   móvil se queda apilado, que en una columna estrecha no cabe de otra forma. */
+.grid--lista{grid-template-columns:1fr}
+@media (min-width:760px){
+  .grid--lista .card{flex-direction:row;align-items:flex-start}
+  /* La foto conserva su proporción y es la que marca la altura de la fila.
+     Si se la estira a la altura de la tarjeta, el recorte se come cabezas. */
+  .grid--lista .pair{flex:0 0 42%;max-width:42%}
+  .grid--lista .card__body{align-self:stretch;justify-content:center;
+    padding:clamp(22px,3vw,34px)}
+  .grid--lista .card__name{font-size:24px}
+  .grid--lista .card__sum{font-size:16px;max-width:52ch}
+  .grid--lista .card__more{margin-top:18px;padding-top:0}
+}
+
 /* ── Cierre de la galería ────────────────────────────────────────────────── */
 .cierre{
   grid-column:1/-1;position:relative;overflow:hidden;
@@ -394,6 +428,35 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
 .ph b{font-size:12px;color:var(--text-3);font-weight:600}
 .ph code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;
   color:var(--text-3);opacity:.8;word-break:break-all;line-height:1.45}
+
+/* ── Testimonios en vídeo ───────────────────────────────────────────────── */
+/* Columnas acotadas: un vídeo vertical estirado a todo lo ancho quedaría
+   larguísimo, así que cada uno no pasa de 270 px y se centran. */
+.testis{display:grid;gap:clamp(16px,2.4vw,26px);justify-content:center;
+  grid-template-columns:repeat(auto-fit,minmax(220px,270px))}
+.testi{margin:0}
+.testi__marco{
+  position:relative;display:block;width:100%;aspect-ratio:9/16;padding:0;
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+  background:var(--surface-2);cursor:pointer;
+  transition:transform var(--mid),border-color var(--mid),box-shadow var(--mid);
+}
+.testi__marco:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:var(--sh-3)}
+.testi__marco img{width:100%;height:100%;object-fit:cover}
+.testi__marco iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.testi__play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:62px;height:62px;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent);color:var(--ink);
+  box-shadow:0 10px 30px -8px rgba(0,0,0,.8),0 0 0 6px rgba(255,90,0,.18);
+  transition:transform var(--mid);
+}
+.testi__marco:hover .testi__play{transform:translate(-50%,-50%) scale(1.08)}
+.testi__play svg{width:28px;height:28px;margin-left:3px}
+.testi__pie{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin-top:13px}
+.testi__nombre{font-size:17px;font-weight:600;letter-spacing:-.02em;color:var(--text)}
+.testi__dato{font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent-2)}
 
 /* ── Cita ────────────────────────────────────────────────────────────────── */
 .quote{

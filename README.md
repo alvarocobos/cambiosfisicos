@@ -108,15 +108,45 @@ web de bienvenida.
 
 ---
 
-## 5. Testimonios en vídeo (cuando los tengas)
+## 5. Testimonios en vídeo
 
-En `index.html` hay una sección de vídeos ya maquetada y comentada
-(busca `TESTIMONIOS EN VÍDEO`). Borra las dos líneas del comentario HTML,
-pega los ID de YouTube y funciona. El CSS ya está hecho.
+Se editan en `assets/data/cambios.js`, en el bloque `TESTIMONIOS` del final.
+Salen en el mismo orden en que estén ahí, así que **el primero de la lista
+es el primero que se ve**.
+
+```js
+{
+  nombre: "José Luis",
+  dato: "12 meses",       // el tiempo, los kilos... lo que destaque
+  youtube: "tjiqwkqtA9M"  // SOLO el identificador, no el enlace entero
+}
+```
+
+Para sacar el identificador, quédate con lo que va detrás de la última barra:
+
+```
+https://youtube.com/shorts/tjiqwkqtA9M?is=XyUE...  →  tjiqwkqtA9M
+https://youtu.be/ABC123                            →  ABC123
+https://youtube.com/watch?v=ABC123                 →  ABC123
+```
+
+Los vídeos **no se cargan hasta que alguien los pulsa**. Se muestra la
+miniatura y el botón de reproducir; el reproductor de YouTube solo entra al
+hacer clic. Si se incrustaran todos de golpe, cada uno se traería más de un
+megabyte antes de que nadie los viera y la página tardaría un mundo.
 
 ---
 
-## 6. Ver la página
+## 6. Rejilla o lista
+
+Encima de los cambios hay un selector para verlos **en rejilla** (de dos en
+dos) o **en lista** (uno debajo de otro, con la foto al lado del texto). La
+elección se guarda en el navegador de cada visitante, así que si vuelve lo
+encuentra como lo dejó. No hay que configurar nada.
+
+---
+
+## 7. Ver la página
 
 No necesita servidor: haz doble clic en `index.html`.
 Si prefieres servirla en local:
@@ -128,7 +158,7 @@ python3 -m http.server 8000
 
 ---
 
-## 7. Publicarla
+## 8. Publicarla
 
 - **GitHub Pages** → Settings › Pages › Branch: `main` / carpeta `/ (root)`.
 - **Netlify / Vercel** → arrastra la carpeta, sin configuración.

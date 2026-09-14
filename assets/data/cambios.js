@@ -202,3 +202,31 @@ const CAMBIOS = [
   }
   ───────────────────────────────────────────────────────────────────────── */
 ];
+
+/* ---------------------------------------------------------------------------
+   3) TESTIMONIOS EN VÍDEO
+   ------------------------------------------------------------------------
+   Salen en el mismo orden en que estén aquí, así que el primero de la lista
+   es el primero que se ve. Para añadir uno nuevo, copia un bloque.
+
+   nombre  → quién habla
+   dato    → lo que se muestra debajo (tiempo, kilos... lo que destaque)
+   youtube → SOLO el identificador del vídeo, no el enlace entero.
+             De https://youtube.com/shorts/tjiqwkqtA9M  →  "tjiqwkqtA9M"
+             De https://youtu.be/ABC123                 →  "ABC123"
+   ------------------------------------------------------------------------ */
+const TESTIMONIOS = [
+  {
+    nombre: "José Luis",
+    dato: "12 meses",
+    youtube: "tjiqwkqtA9M"
+  }
+
+  /* ── PLANTILLA PARA UNO NUEVO ────────────────────────────────────────────
+  ,{
+    nombre: "Nombre",
+    dato: "8 meses",
+    youtube: "IDENTIFICADOR"
+  }
+  ───────────────────────────────────────────────────────────────────────── */
+];

@@ -229,6 +229,71 @@
     });
   }
 
+  /* ── Testimonios en vídeo ──────────────────────────────────────────────── */
+  /* Se pinta la miniatura y el botón de reproducir; el vídeo de YouTube solo
+     se carga al pulsarlo. Si se incrustaran todos de golpe, cada uno se
+     traería más de un megabyte antes de que nadie los vea. */
+  function pintarTestimonios() {
+    var cont = $("#testis");
+    if (!cont || typeof TESTIMONIOS === "undefined" || !TESTIMONIOS.length) return;
+
+    cont.innerHTML = TESTIMONIOS.map(function (t, i) {
+      return '<figure class="testi reveal">' +
+               '<button class="testi__marco" data-yt="' + t.youtube + '" ' +
+                 'aria-label="Ver el testimonio de ' + t.nombre + '">' +
+                 '<img src="https://i.ytimg.com/vi/' + t.youtube + '/hqdefault.jpg" ' +
+                   'alt="" loading="lazy" decoding="async" ' +
+                   'onerror="this.style.display=\'none\'">' +
+                 '<span class="testi__play" aria-hidden="true">' +
+                   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>' +
+                 "</span>" +
+               "</button>" +
+               '<figcaption class="testi__pie">' +
+                 '<span class="testi__nombre">' + t.nombre + "</span>" +
+                 '<span class="testi__dato">' + t.dato + "</span>" +
+               "</figcaption>" +
+             "</figure>";
+    }).join("");
+
+    cont.addEventListener("click", function (e) {
+      var boton = e.target.closest(".testi__marco");
+      if (!boton || boton.dataset.puesto) return;
+      boton.dataset.puesto = "1";
+      boton.innerHTML =
+        '<iframe src="https://www.youtube-nocookie.com/embed/' + boton.dataset.yt +
+          '?autoplay=1&rel=0" title="Testimonio" allowfullscreen ' +
+          'allow="autoplay; encrypted-media; picture-in-picture"></iframe>';
+    });
+  }
+
+  /* ── Rejilla o lista ───────────────────────────────────────────────────── */
+  /* Se recuerda la elección para la próxima visita. */
+  var CLAVE_VISTA = "f90-vista";
+
+  function vistas() {
+    var grid = $("#grid");
+    var botones = $$(".vista");
+    if (!grid || !botones.length) return;
+
+    function aplicar(v) {
+      grid.classList.toggle("grid--lista", v === "lista");
+      botones.forEach(function (b) {
+        var activo = b.dataset.vista === v;
+        b.classList.toggle("is-active", activo);
+        b.setAttribute("aria-pressed", activo ? "true" : "false");
+      });
+      try { localStorage.setItem(CLAVE_VISTA, v); } catch (e) {}
+    }
+
+    var guardada;
+    try { guardada = localStorage.getItem(CLAVE_VISTA); } catch (e) {}
+    aplicar(guardada === "lista" ? "lista" : "rejilla");
+
+    botones.forEach(function (b) {
+      b.addEventListener("click", function () { aplicar(b.dataset.vista); });
+    });
+  }
+
   /* ── La chapa de la medida ─────────────────────────────────────────────── */
   /* Aparece cuando la tarjeta entra en pantalla, se deja leer un momento y
      después se aparta para no tapar la foto. Vuelve al pasar el ratón. */
@@ -314,6 +379,8 @@
     pintarGrid();
     aplicarCTAs();
     filtros();
+    vistas();
+    pintarTestimonios();
     chapas();
     lightbox();
     reveal();
