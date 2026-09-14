@@ -225,6 +225,11 @@ const TESTIMONIOS = [
     nombre: "Juan",
     dato: "6 meses",
     youtube: "9seUh7s_M4A"
+  },
+  {
+    nombre: "Mónica",
+    dato: "12 meses",
+    youtube: "jkKoTSn5tM4"
   }
 
   /* ── PLANTILLA PARA UNO NUEVO ────────────────────────────────────────────
