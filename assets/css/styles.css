@@ -215,7 +215,31 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
 
 .checks{display:grid;gap:13px;max-width:520px;margin:0 auto 30px;text-align:left}
 .checks li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--text-2)}
-.checks svg{width:20px;height:20px;flex:none;margin-top:3px;color:var(--accent)}
+/* Los tics, encendidos como un neón: núcleo claro y halo naranja alrededor.
+   El halo respira muy despacio para que parezca un tubo de verdad. */
+.checks svg{
+  width:20px;height:20px;flex:none;margin-top:3px;
+  color:#FFC08A;
+  filter:
+    drop-shadow(0 0 1px var(--accent-2))
+    drop-shadow(0 0 4px var(--accent))
+    drop-shadow(0 0 11px var(--accent-45));
+  animation:neon 3.6s ease-in-out infinite;
+}
+@keyframes neon{
+  0%,100%{
+    filter:
+      drop-shadow(0 0 1px var(--accent-2))
+      drop-shadow(0 0 4px var(--accent))
+      drop-shadow(0 0 11px var(--accent-45));
+  }
+  50%{
+    filter:
+      drop-shadow(0 0 1px var(--accent-2))
+      drop-shadow(0 0 7px var(--accent))
+      drop-shadow(0 0 18px var(--accent-45));
+  }
+}
 .checks b{color:var(--text);font-weight:600}
 
 .hero__cta{width:100%;display:flex;justify-content:center}
@@ -232,8 +256,11 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
 .stats__grid{display:grid;grid-template-columns:repeat(3,1fr)}
 .stats__grid li{padding:clamp(26px,4vw,38px) 6px;text-align:center;border-right:1px solid var(--line)}
 .stats__grid li:last-child{border-right:0}
+/* tabular-nums: todas las cifras miden lo mismo, así el número no baila
+   mientras el marcador sube */
 .stats__v{display:block;font-size:clamp(30px,5vw,44px);font-weight:600;
-  letter-spacing:-.04em;color:var(--accent);line-height:1}
+  letter-spacing:-.04em;color:var(--accent);line-height:1;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .stats__l{display:block;margin-top:.6em;color:var(--text-3);
   font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.45}
 
@@ -636,6 +663,7 @@ body.lb-open{overflow:hidden}
   .entra{opacity:1;animation:none}
   .linea > span{transform:none;animation:none}
   .wa__onda{display:none}
+  .checks svg{animation:none}
   .wa__nucleo{animation:none}
   .medida{opacity:1;transform:translate(-50%,0)}
   .card.chapa-fuera .medida,.lb__media.chapa-fuera .medida{opacity:1;transform:translate(-50%,0)}

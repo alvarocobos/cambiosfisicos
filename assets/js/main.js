@@ -28,6 +28,22 @@
   }
 
   /* ── Barra de datos ────────────────────────────────────────────────────── */
+  /* Parte un valor como "+400" en las piezas que necesita el marcador:
+     lo de delante, el número y lo de detrás. Así en cambios.js se sigue
+     escribiendo el dato tal cual y no hace falta tocar nada más. */
+  function trozos(valor) {
+    var m = String(valor).match(/^([^\d]*)(\d+(?:[.,]\d+)?)(.*)$/);
+    if (!m) return null;
+    var decimales = m[2].split(/[.,]/)[1];
+    return {
+      pre: m[1],
+      post: m[3],
+      fin: parseFloat(m[2].replace(",", ".")),
+      dec: decimales ? decimales.length : 0,
+      sep: m[2].indexOf(",") > -1 ? "," : "."
+    };
+  }
+
   function pintarStats() {
     var ul = $("#stats");
     if (!ul || !CONFIG.stats) return;
@@ -35,6 +51,65 @@
       return '<li><span class="stats__v">' + s.valor + '</span>' +
              '<span class="stats__l">' + s.etiqueta + "</span></li>";
     }).join("");
+
+    // Se guardan las piezas en el propio elemento. Si el marcador no llega a
+    // arrancar, el número correcto ya está escrito y no se nota nada.
+    $$(".stats__v", ul).forEach(function (el, i) {
+      var t = trozos(CONFIG.stats[i].valor);
+      if (!t) return;
+      el.dataset.num = t.fin;
+      el.dataset.pre = t.pre;
+      el.dataset.post = t.post;
+      el.dataset.dec = t.dec;
+      el.dataset.sep = t.sep;
+    });
+  }
+
+  /* ── Marcadores: los datos suben hasta su número al llegar a ellos ─────── */
+  var DURACION_MARCADOR = 1500;
+
+  function contar(el) {
+    var fin = parseFloat(el.dataset.num);
+    if (isNaN(fin)) return;
+    var pre = el.dataset.pre || "";
+    var post = el.dataset.post || "";
+    var dec = parseInt(el.dataset.dec, 10) || 0;
+    var sep = el.dataset.sep || ".";
+    var inicio = 0;
+
+    function escribir(n) {
+      el.textContent = pre + n.toFixed(dec).replace(".", sep) + post;
+    }
+
+    function paso(ahora) {
+      if (!inicio) inicio = ahora;
+      var p = Math.min((ahora - inicio) / DURACION_MARCADOR, 1);
+      escribir(fin * (1 - Math.pow(1 - p, 3)));   // frena al final
+      if (p < 1) requestAnimationFrame(paso);
+    }
+
+    escribir(0);
+    requestAnimationFrame(paso);
+  }
+
+  function marcadores() {
+    var datos = $$(".stats__v[data-num]");
+    if (!datos.length) return;
+    // Sin IntersectionObserver, o si se pide menos movimiento, se quedan
+    // directamente con su número.
+    var quieto = window.matchMedia &&
+                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (quieto || !("IntersectionObserver" in window)) return;
+
+    var obs = new IntersectionObserver(function (visibles) {
+      visibles.forEach(function (v) {
+        if (!v.isIntersecting) return;
+        obs.unobserve(v.target);
+        contar(v.target);
+      });
+    }, { threshold: 0.6 });
+
+    datos.forEach(function (el) { obs.observe(el); });
   }
 
   /* ── Foto (con placeholder si todavía no existe el archivo) ────────────── */
@@ -391,6 +466,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     repasarFallidas();
     pintarStats();
+    marcadores();
     pintarGrid();
     aplicarCTAs();
     filtros();
