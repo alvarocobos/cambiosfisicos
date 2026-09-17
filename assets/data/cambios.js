@@ -222,6 +222,11 @@ const TESTIMONIOS = [
     youtube: "tjiqwkqtA9M"
   },
   {
+    nombre: "Nacho",
+    dato: "6 meses",
+    youtube: "a0h4gxTaErc"
+  },
+  {
     nombre: "Juan",
     dato: "6 meses",
     youtube: "9seUh7s_M4A"
