@@ -25,6 +25,13 @@ const CONFIG = {
   // Tu usuario de Instagram, sin la @
   instagram: "_alvarotrainer",
 
+  // Tu correo, para quien prefiera escribirte por ahí en vez de WhatsApp.
+  // Si lo dejas vacío ("") desaparece el botón del correo, no queda roto.
+  email: "alvarocobos1995@gmail.com",
+
+  // Asunto con el que se abre el correo.
+  asuntoEmail: "Información sobre el Método F90",
+
   // OPCIONAL: si tienes formulario de aplicación o calendario (Typeform,
   // Calendly, Tally...), pon aquí la URL y los botones apuntarán ahí en vez
   // de a WhatsApp. Déjalo vacío ("") para seguir usando WhatsApp.

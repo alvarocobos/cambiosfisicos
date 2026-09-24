@@ -21,12 +21,18 @@ Abre **`assets/data/cambios.js`** y edita el bloque `CONFIG` de arriba:
 ```js
 whatsapp: "34600000000",   // tu número con prefijo, sin + ni espacios
 instagram: "alvarocobos",  // tu usuario, sin la @
+email: "tu@correo.com",    // el botón del correo; vacío ("") y desaparece
+asuntoEmail: "...",        // el asunto con el que se abre el correo
 urlAplicar: "",            // opcional: Typeform / Calendly / formulario
 ```
 
 Todos los botones de la página (cabecera, portada, fichas, CTA final y el botón
 flotante) apuntan solos a WhatsApp con un mensaje ya escrito. Si rellenas
 `urlAplicar`, todos apuntarán ahí en vez de a WhatsApp.
+
+Abajo a la derecha hay dos botones siempre a mano: el de WhatsApp, en naranja,
+y al lado el del correo, más discreto. El correo también sale en el pie. Si
+dejas `email` vacío, los dos enlaces del correo se quitan solos.
 
 ---
 

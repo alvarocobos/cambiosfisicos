@@ -16,6 +16,16 @@
     return "https://wa.me/" + tel + "?text=" + encodeURIComponent(CONFIG.mensajeWhatsapp || "");
   }
 
+  /* Correo, con el asunto y el mensaje ya escritos. Si en cambios.js no hay
+     correo, devuelve vacío y los enlaces se quitan de la página. */
+  function enlaceCorreo() {
+    var correo = String(CONFIG.email || "").trim();
+    if (!correo) return "";
+    return "mailto:" + correo +
+           "?subject=" + encodeURIComponent(CONFIG.asuntoEmail || "") +
+           "&body=" + encodeURIComponent(CONFIG.mensajeWhatsapp || "");
+  }
+
   function aplicarCTAs() {
     var url = enlaceContacto();
     $$(".js-cta").forEach(function (a) {
@@ -23,6 +33,13 @@
       a.target = "_blank";
       a.rel = "noopener";
     });
+
+    var correo = enlaceCorreo();
+    $$(".js-email").forEach(function (a) {
+      if (correo) a.href = correo;
+      else a.remove();
+    });
+
     var ig = $("#footIg");
     if (ig) ig.href = "https://instagram.com/" + String(CONFIG.instagram || "").replace(/^@/, "");
   }
