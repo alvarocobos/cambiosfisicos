@@ -392,6 +392,50 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 8px)}
   .grid--lista .card__more{margin-top:18px;padding-top:0}
 }
 
+/* ── Tarjeta de la calculadora ───────────────────────────────────────────── */
+/* Va dentro de la página, no solo en el menú: el menú de arriba se esconde
+   por debajo de 900 px y en el móvil no lo vería nadie. */
+#calculadora{padding-block:clamp(30px,4.5vw,54px)}
+.calc{
+  position:relative;overflow:hidden;display:grid;align-items:center;
+  gap:clamp(22px,3vw,40px);
+  background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-xl);
+  padding:clamp(28px,4vw,48px) clamp(22px,3.5vw,44px);
+  transition:border-color var(--mid),transform var(--mid),box-shadow var(--mid);
+}
+.calc::before{
+  content:"";position:absolute;inset:-60% -14% auto auto;width:62%;height:220%;
+  pointer-events:none;
+  background:radial-gradient(44% 44% at 76% 50%,var(--accent-22),transparent 68%);
+}
+.calc > *{position:relative;z-index:1}
+.calc:hover{border-color:var(--accent-45);transform:translateY(-3px);box-shadow:var(--sh-3)}
+.calc:hover .ico--arrow{transform:translateX(3px)}
+.calc:hover .calc__btn{background:#ff6a1a;border-color:#ff6a1a;
+  box-shadow:0 12px 34px -12px rgba(255,90,0,.95)}
+.calc:hover .calc__ico{transform:scale(1.05);border-color:var(--accent-45)}
+
+.calc h2{font-size:clamp(23px,3vw,34px);margin-bottom:.5em}
+.calc .lead{max-width:50ch;margin-bottom:1.4em}
+.calc__btn{margin:0}
+
+.calc__ico{
+  justify-self:start;flex:none;
+  width:clamp(68px,9vw,104px);aspect-ratio:1;border-radius:var(--r-lg);
+  display:grid;place-items:center;
+  background:var(--accent-14);border:1px solid var(--accent-22);color:var(--accent-2);
+  transition:transform var(--mid),border-color var(--mid);
+}
+.calc__ico svg{width:52%;height:52%}
+
+/* En estrecho el icono va arriba del todo: debajo del botón se quedaba
+   suelto, como si sobrara. */
+.calc__ico{order:-1}
+@media (min-width:820px){
+  .calc{grid-template-columns:1fr auto}
+  .calc__ico{order:0;justify-self:end}
+}
+
 /* ── Cierre de la galería ────────────────────────────────────────────────── */
 .cierre{
   grid-column:1/-1;position:relative;overflow:hidden;

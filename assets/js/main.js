@@ -40,6 +40,20 @@
       else a.remove();
     });
 
+    // La calculadora vive en su propia web, así que se abre aparte.
+    var calc = String(CONFIG.urlCalculadora || "").trim();
+    $$(".js-calc").forEach(function (a) {
+      if (!calc) {
+        // Sin calculadora no dejamos ni el enlace ni su apartado vacío.
+        var apartado = a.closest("#calculadora");
+        (apartado || a).remove();
+        return;
+      }
+      a.href = calc;
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+
     var ig = $("#footIg");
     if (ig) ig.href = "https://instagram.com/" + String(CONFIG.instagram || "").replace(/^@/, "");
   }

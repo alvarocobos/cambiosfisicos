@@ -23,6 +23,7 @@ whatsapp: "34600000000",   // tu número con prefijo, sin + ni espacios
 instagram: "alvarocobos",  // tu usuario, sin la @
 email: "tu@correo.com",    // el botón del correo; vacío ("") y desaparece
 asuntoEmail: "...",        // el asunto con el que se abre el correo
+urlCalculadora: "...",     // tu calculadora de calorías; vacío y desaparece
 urlAplicar: "",            // opcional: Typeform / Calendly / formulario
 ```
 
@@ -33,6 +34,11 @@ flotante) apuntan solos a WhatsApp con un mensaje ya escrito. Si rellenas
 Abajo a la derecha hay dos botones siempre a mano: el de WhatsApp, en naranja,
 y al lado el del correo, más discreto. El correo también sale en el pie. Si
 dejas `email` vacío, los dos enlaces del correo se quitan solos.
+
+La calculadora de calorías tiene tres accesos: el menú de arriba, una tarjeta
+dentro de la página (después de «La báscula miente») y el pie. Se abre en otra
+pestaña, porque vive en su propia web. Si dejas `urlCalculadora` vacío, los tres
+desaparecen, la tarjeta incluida.
 
 ---
 

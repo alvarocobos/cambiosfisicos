@@ -32,6 +32,10 @@ const CONFIG = {
   // Asunto con el que se abre el correo.
   asuntoEmail: "Información sobre el Método F90",
 
+  // Tu calculadora de calorías. Sale en el menú de arriba, en una tarjeta
+  // dentro de la página y en el pie. Vacío ("") y desaparece de los tres.
+  urlCalculadora: "https://calculadora.alvarocobos.com",
+
   // OPCIONAL: si tienes formulario de aplicación o calendario (Typeform,
   // Calendly, Tally...), pon aquí la URL y los botones apuntarán ahí en vez
   // de a WhatsApp. Déjalo vacío ("") para seguir usando WhatsApp.
