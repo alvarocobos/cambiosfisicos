@@ -256,3 +256,47 @@ const TESTIMONIOS = [
   }
   ───────────────────────────────────────────────────────────────────────── */
 ];
+
+/* ---------------------------------------------------------------------------
+   4) MENSAJES DE WHATSAPP
+   ------------------------------------------------------------------------
+   Salen como una captura de pantalla de un iPhone. Mientras esta lista esté
+   vacía el apartado entero no aparece en la página, así que puedes ir
+   añadiendo conversaciones de una en una sin que nada quede a medias.
+
+   ⚠️ ÁLVARO: esto son mensajes REALES de clientes reales. No te inventes
+   ninguno. Tu propio pie de página dice que todo lo que sale aquí es real y
+   con consentimiento, y desde el Real Decreto-ley 24/2021 colar mensajes
+   falsos como auténticos es práctica comercial desleal. Pide el OK antes de
+   publicar una conversación, aunque solo salga el nombre de pila.
+
+   nombre   → cómo aparece el contacto arriba del chat
+   dato     → lo que se lee debajo de la captura (tiempo, kilos, lo que destaque)
+   mensajes → la conversación, en orden. Cada uno:
+                texto → lo que dice
+                audio → en vez de texto, un audio: pon su duración ("1:24")
+                mio   → true si lo escribiste tú (sale en verde, a la derecha)
+                hora  → la hora que se ve en el globo
+                editado → true si quieres que ponga "Editado"
+
+   Si la conversación es larga no pasa nada: la captura enseña el final,
+   igual que una captura de verdad.
+   ------------------------------------------------------------------------ */
+const MENSAJES = [
+
+  /* ── PARA AÑADIR UNA CONVERSACIÓN ────────────────────────────────────────
+     Copia este bloque, quítale las marcas de comentario de arriba y de abajo
+     y pega los mensajes tal cual te llegaron. No hace falta arreglarles las
+     faltas: cuanto más literal, más creíble.
+
+  {
+    nombre: "Nombre y apellido",
+    dato: "6 meses",
+    mensajes: [
+      { mio: true, texto: "¿Qué tal la semana?", hora: "9:12" },
+      { texto: "Lo que te escriba el cliente, tal cual", hora: "9:40" },
+      { texto: "Y lo siguiente que te diga", hora: "9:41" }
+    ]
+  }
+  ───────────────────────────────────────────────────────────────────────── */
+];

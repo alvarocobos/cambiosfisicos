@@ -42,6 +42,38 @@ desaparecen, la tarjeta incluida.
 
 ---
 
+## Mensajes de WhatsApp
+
+En `assets/data/cambios.js`, al final, está `MENSAJES`. Cada conversación sale
+como una captura de pantalla de un iPhone, con sus globos, sus ticks azules y
+las notas de voz.
+
+```js
+{
+  nombre: "Nombre y apellido",
+  dato: "6 meses",
+  mensajes: [
+    { mio: true, texto: "¿Qué tal la semana?", hora: "9:12" },
+    { texto: "Lo que te conteste, tal cual", hora: "9:40" },
+    { mio: true, audio: "1:24", hora: "9:59" }   // una nota de voz
+  ]
+}
+```
+
+`mio: true` lo pinta en verde a la derecha, con los ticks azules. Sin eso, en
+gris a la izquierda. `audio` en vez de `texto` pinta una nota de voz con su
+duración. Añade `editado: true` si quieres que ponga «Editado».
+
+Si la conversación es larga no pasa nada: la captura enseña el final, igual que
+una de verdad. Y mientras `MENSAJES` esté vacío, el apartado entero no aparece.
+
+**Esto tienen que ser mensajes reales.** El pie de la página dice que todo lo
+que sale es real y con consentimiento, y desde el Real Decreto-ley 24/2021
+presentar opiniones falsas como auténticas es práctica comercial desleal. Pide
+el OK antes de publicar una conversación.
+
+---
+
 ## 2. Subir las fotos
 
 | Archivo | Qué es | Medidas |

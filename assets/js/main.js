@@ -400,6 +400,97 @@
     });
   }
 
+  /* ── Mensajes de WhatsApp, como una captura de un iPhone ──────────────── */
+  function escapar(t) {
+    return String(t)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  // Iniciales para el círculo del contacto: "Pedro Martínez" → "PM"
+  function iniciales(nombre) {
+    return String(nombre).trim().split(/\s+/).slice(0, 2)
+      .map(function (p) { return p.charAt(0).toUpperCase(); }).join("");
+  }
+
+  var TICKS =
+    '<svg class="globo__ticks" viewBox="0 0 18 12" fill="none" ' +
+    'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M1 6.6 4.2 10 10.6 2"/><path d="M7.4 6.6 10.6 10 17 2"/></svg>';
+
+  function globo(m) {
+    var mio = !!m.mio;
+    var cuerpo = m.audio
+      ? '<span class="audio">' +
+          '<span class="audio__play"><svg viewBox="0 0 24 24" fill="currentColor">' +
+            '<path d="M8 5.5v13l11-6.5z"/></svg></span>' +
+          '<span class="audio__onda" aria-hidden="true"></span>' +
+          '<span class="audio__min">' + escapar(m.audio) + "</span>" +
+        "</span>"
+      : '<span class="globo__txt">' + escapar(m.texto || "") + "</span>";
+
+    return '<div class="globo' + (mio ? " globo--mio" : "") + '">' +
+             cuerpo +
+             '<span class="globo__pie">' +
+               (m.editado ? '<span class="globo__ed">Editado</span>' : "") +
+               escapar(m.hora || "") +
+               (mio ? TICKS : "") +
+             "</span>" +
+           "</div>";
+  }
+
+  function movil(c) {
+    return '<figure class="movil reveal">' +
+             '<div class="movil__marco">' +
+               '<span class="movil__isla" aria-hidden="true"></span>' +
+               '<div class="movil__estado" aria-hidden="true">' +
+                 '<span class="movil__hora">9:41</span>' +
+                 '<span class="movil__senal"></span>' +
+               "</div>" +
+               '<div class="chat__cab">' +
+                 '<svg class="chat__atras" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+                   'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+                   '<path d="M15 5l-7 7 7 7"/></svg>' +
+                 '<span class="chat__ava" aria-hidden="true">' + escapar(iniciales(c.nombre)) + "</span>" +
+                 '<span class="chat__nom">' + escapar(c.nombre) + "</span>" +
+               "</div>" +
+               '<div class="chat__fondo">' +
+                 '<div class="chat__hilo">' + c.mensajes.map(globo).join("") + "</div>" +
+               "</div>" +
+               '<div class="chat__barra" aria-hidden="true">' +
+                 '<span class="chat__mas">+</span>' +
+                 '<span class="chat__campo"></span>' +
+                 '<span class="chat__mic"><svg viewBox="0 0 24 24" fill="currentColor">' +
+                   '<path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"/>' +
+                   '<path d="M18 11a6 6 0 0 1-12 0H4a8 8 0 0 0 7 7.9V22h2v-3.1A8 8 0 0 0 20 11z"/>' +
+                 "</svg></span>" +
+               "</div>" +
+             "</div>" +
+             '<figcaption class="movil__pie">' +
+               '<span class="movil__nom">' + escapar(c.nombre) + "</span>" +
+               (c.dato ? '<span class="movil__dato">' + escapar(c.dato) + "</span>" : "") +
+             "</figcaption>" +
+           "</figure>";
+  }
+
+  function pintarMensajes() {
+    var cont = $("#mensajes");
+    if (!cont) return;
+
+    // Solo las conversaciones que tengan algo escrito. Mientras no haya
+    // ninguna, el apartado entero se quita y no deja un hueco vacío.
+    var hay = (typeof MENSAJES === "undefined" ? [] : MENSAJES).filter(function (c) {
+      return c && c.mensajes && c.mensajes.length;
+    });
+
+    var apartado = cont.closest("#charlas");
+    if (!hay.length) {
+      if (apartado) apartado.remove();
+      return;
+    }
+    cont.innerHTML = hay.map(movil).join("");
+  }
+
   /* ── Rejilla o lista ───────────────────────────────────────────────────── */
   /* Se recuerda la elección para la próxima visita. */
   var CLAVE_VISTA = "f90-vista";
@@ -516,6 +607,7 @@
     filtros();
     vistas();
     pintarTestimonios();
+    pintarMensajes();
     pintarCierre();
     chapas();
     lightbox();
