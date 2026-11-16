@@ -115,12 +115,12 @@ const CAMBIOS = [
     nombre: "Pedro",
     genero: "hombre",
     tipo: "perdida",
-    titular: "Menos barriga",
+    titular: "−20 cm de barriga",
     duracion: "12 semanas",
-    resumen: "Doce semanas en el equipo. Y esto es solo el principio.",
+    resumen: "Veinte centímetros de barriga menos. Y esto es solo el principio.",
     historia:
-      "De perfil es donde mejor se ve: la barriga que le asomaba por delante ya no está, y el abdomen le entra en línea con el pecho. Doce semanas. Ni una dieta de castigo ni meterse en el gimnasio todos los días: comiendo y entrenando con cabeza. Y lo mejor es que sigue en ello, así que esto no es el final de su cambio, es cómo va la cosa de momento.",
-    tags: ["Pérdida de grasa", "12 semanas", "− Barriga"]
+      "Veinte centímetros de barriga en doce semanas. De perfil es donde mejor se ve: lo que le asomaba por delante ya no está y el abdomen le entra en línea con el pecho. Ni dieta de castigo ni meterse en el gimnasio todos los días, comiendo y entrenando con cabeza. Y lo mejor es que sigue en ello, así que esto no es el final de su cambio, es cómo va la cosa de momento.",
+    tags: ["Pérdida de grasa", "12 semanas", "−20 cm"]
   },
   {
     slug: "monica",
